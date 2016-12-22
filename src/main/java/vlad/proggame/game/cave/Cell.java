@@ -4,4 +4,6 @@ public interface Cell {
 
     boolean blocksMovement();
 
+    void onPlayerEntered(Cave cave);
+
 }

@@ -1,7 +1,18 @@
 package vlad.proggame.game;
 
-public interface Player {
+import com.google.common.base.Preconditions;
+import vlad.proggame.game.cave.Cave;
 
-    void play();
+public abstract class Player {
+
+    Cave cave = null;
+
+    void enter(Cave cave) {
+        Preconditions.checkState(cave == null, "Already entered");
+        this.cave = cave;
+        run();
+    }
+
+    abstract void run();
 
 }

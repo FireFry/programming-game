@@ -6,6 +6,7 @@ public class Cave {
     private final CellsGrid cells;
     private int playerX;
     private int playerY;
+    private boolean gameOver = false;
 
     public Cave(CellsGrid cells, int initialPlayerX, int initialPlayerY) {
         this.cells = cells;
@@ -13,13 +14,34 @@ public class Cave {
     }
 
     private void setPlayerPosition(int x, int y) {
-        Preconditions.checkArgument(!cells.getCell(x, y).blocksMovement(), "Cannot put player at (%d, %d)", x, y);
+        Preconditions.checkArgument(!cells.get(x, y).blocksMovement(), "Cannot put player at (%d, %d)", x, y);
         this.playerX = x;
         this.playerY = y;
     }
 
+    public void movePlayer(int dx, int dy) {
+        if (gameOver) {
+            return;
+        }
+        Cell cell = cells.get(dx, dy);
+        if (cell.blocksMovement()) {
+            return;
+        }
+        playerX += dx;
+        playerY += dy;
+        cell.onPlayerEntered(this);
+    }
+
     public static CaveBuilder builder(int width, int height) {
         return new CaveBuilder(width, height);
+    }
+
+    void onExitEntered() {
+        win();
+    }
+
+    private void win() {
+        gameOver = true;
     }
 
     public static class CaveBuilder {
@@ -38,7 +60,7 @@ public class Cave {
         }
 
         public void setCell(int x, int y, Cell cell) {
-            cells.setCell(x, y, cell);
+            cells.set(x, y, cell);
         }
 
         public Cave build() {

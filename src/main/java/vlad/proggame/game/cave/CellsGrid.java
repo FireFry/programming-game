@@ -23,11 +23,11 @@ public class CellsGrid {
         return array;
     }
 
-    public Cell getCell(int x, int y) {
+    public Cell get(int x, int y) {
         return containsPosition(x, y) ? cells[x][y] : Wall.INSTANCE;
     }
 
-    public void setCell(int x, int y, Cell cell) {
+    public void set(int x, int y, Cell cell) {
         Preconditions.checkArgument(containsPosition(x, y), "position (%d, %d) is outside of this grid", x, y);
         Preconditions.checkNotNull(cell, "cell is null");
         cells[x][y] = cell;

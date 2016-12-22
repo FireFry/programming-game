@@ -8,4 +8,10 @@ public enum Exit implements Cell {
         return false;
     }
 
+    @Override
+    public void onPlayerEntered(Cave cave) {
+        cave.onExitEntered();
+    }
+
+
 }

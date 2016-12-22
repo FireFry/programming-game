@@ -1,6 +1,12 @@
 package vlad.proggame.game;
 
-public abstract class SimplePlayer implements Player {
+public abstract class SimplePlayer extends Player {
+
+    void run() {
+        play();
+    }
+
+    public abstract void play();
 
     public final void moveNorth() {
         move(AbsoluteDirection.NORTH);
@@ -19,7 +25,7 @@ public abstract class SimplePlayer implements Player {
     }
 
     private void move(AbsoluteDirection direction) {
-
+        cave.movePlayer(direction.dx(), direction.dy());
     }
 
 }

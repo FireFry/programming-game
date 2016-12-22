@@ -14,11 +14,11 @@ public enum AbsoluteDirection {
         this.dy = dy;
     }
 
-    public int getDx() {
+    public int dx() {
         return dx;
     }
 
-    public int getDy() {
+    public int dy() {
         return dy;
     }
 }

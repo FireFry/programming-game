@@ -8,4 +8,9 @@ public enum EmptyCell implements Cell {
         return false;
     }
 
+    @Override
+    public void onPlayerEntered(Cave cave) {
+        // Nothing happens
+    }
+
 }
