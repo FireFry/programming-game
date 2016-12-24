@@ -1,4 +1,4 @@
-package vlad.game.impl;
+package vlad.game.impl.cave;
 
 import com.google.common.base.Preconditions;
 
@@ -22,13 +22,16 @@ public class Cave {
             }
         }
         setPlayerPosition(px, py);
+
+        this.px = px;
+        this.py = py;
     }
 
     private void setPlayerPosition(int x, int y) {
         Preconditions.checkArgument(isValidPosition(x, y));
         Preconditions.checkState(cells[x][y] != Cell.WALL);
-        px = x;
-        py = y;
+        this.px = x;
+        this.py = y;
     }
 
     private boolean isValidPosition(int x, int y) {
@@ -52,6 +55,7 @@ public class Cave {
     }
 
     public void setCell(int x, int y, Cell cell) {
+        Preconditions.checkState(!(cell == Cell.WALL && px == x && py == y));
         cells[x][y] = cell;
     }
 

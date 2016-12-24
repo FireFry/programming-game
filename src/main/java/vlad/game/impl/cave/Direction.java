@@ -1,4 +1,4 @@
-package vlad.game.impl;
+package vlad.game.impl.cave;
 
 public enum Direction {
     NORTH(0, -1),
