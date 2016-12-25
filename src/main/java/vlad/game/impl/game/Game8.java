@@ -1,20 +1,24 @@
 package vlad.game.impl.game;
 
-import vlad.game.Level7;
+import vlad.game.Level8;
 import vlad.game.impl.app.CavePainter;
 import vlad.game.impl.cave.Cave;
 
-public class Game7 extends Game {
+public class Game8 extends Game {
 
-    public Game7() {
-        super(7, new Level7());
+    public Game8() {
+        super(8, new Level8());
     }
 
     @Override
     protected Cave createCave() {
         return CavePainter.paint(
                 "######",
-                "#P.#E#",
+                "#...P#",
+                "#.####",
+                "#...##",
+                "###..#",
+                "#E.#.#",
                 "##...#",
                 "######");
     }

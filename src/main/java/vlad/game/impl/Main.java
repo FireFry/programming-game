@@ -26,6 +26,10 @@ public class Main {
                     new Game5(),
                     new Game6(),
                     new Game7(),
+                    new Game8(),
+                    new Game9(),
+                    new Game10(),
+                    new Game11(),
             };
             for (int i = lastCompleted + 1; i < games.length; i++) {
                 Game game = games[i];
@@ -41,7 +45,7 @@ public class Main {
                 }
             }
             System.out.println("All levels passed!");
-            // saves.deleteOnExit();
+            saves.deleteOnExit();
         } finally {
             System.exit(0);
         }

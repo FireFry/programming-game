@@ -5,7 +5,11 @@ import vlad.game.impl.cave.Direction;
 
 public abstract class Player4 extends Player {
 
-    private Direction direction = Direction.EAST;
+    private Direction direction;
+
+    public Player4(Direction initialDirection) {
+        direction = initialDirection;
+    }
 
     protected final boolean canMoveStraight() {
         return canMove(direction);

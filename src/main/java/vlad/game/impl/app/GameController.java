@@ -20,8 +20,8 @@ public class GameController {
     private static final Color EXIT_COLOR = new Color(50, 255, 50);
     private static final Color PLAYER_COLOR = new Color(24, 65, 159);
 
-    private static final int SLEEP_TIME = 500;
-    private static final int LONG_SLEEP_TIME = 1000;
+    private static final int SLEEP_TIME = 100;
+    private static final int LONG_SLEEP_TIME = 500;
 
     private final int id;
     private final Cave cave;
