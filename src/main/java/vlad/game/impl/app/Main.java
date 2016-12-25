@@ -13,11 +13,11 @@ public class Main {
             @Override
             public void play() {
                 while (true) {
-                    move(Direction.values()[random.nextInt(Direction.values().length)]);
+                    app.onMoveRequested(Direction.values()[random.nextInt(Direction.values().length)]);
                 }
             }
         };
-        new Application(CaveRandomizer.random(10, 10), player).start();
+        new GameController(0, CaveRandomizer.random(3, 3), player).start();
     }
 
 }

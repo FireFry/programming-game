@@ -1,35 +1,17 @@
 package vlad.game.impl.app;
 
-import vlad.game.impl.cave.Direction;
+import vlad.game.impl.cave.Cave;
 
 public abstract class Player {
 
-    private Application app = null;
+    GameController app = null;
+    Cave cave;
 
-    void attach(Application app) {
+    void attach(GameController app) {
         this.app = app;
+        this.cave = app.getCave();
     }
 
     public abstract void play();
-
-    protected final void moveNorth() {
-        move(Direction.NORTH);
-    }
-
-    protected final void moveEast() {
-        move(Direction.EAST);
-    }
-
-    protected final void moveSouth() {
-        move(Direction.SOUTH);
-    }
-
-    protected final void moveWest() {
-        move(Direction.WEST);
-    }
-
-    protected final void move(Direction direction) {
-        app.onMoveRequested(direction);
-    }
 
 }

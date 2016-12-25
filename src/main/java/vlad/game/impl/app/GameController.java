@@ -8,13 +8,12 @@ import vlad.game.impl.cave.Direction;
 import javax.swing.*;
 import java.awt.*;
 
-public class Application {
+public class GameController {
 
     private static final int CELL_WIDTH = 50;
     private static final int CELL_HEIGHT = 50;
 
-    private static final int PLAYER_WIDTH = 30;
-    private static final int PLAYER_HEIGHT = 30;
+    private static final float PLAYER_SCALE_FACTOR = 0.8f;
 
     private static final Color BG_COLOR = new Color(200, 200, 200);
     private static final Color WALL_COLOR = new Color(100, 100, 100);
@@ -22,20 +21,23 @@ public class Application {
     private static final Color PLAYER_COLOR = new Color(24, 65, 159);
 
     private static final int SLEEP_TIME = 500;
+    private static final int LONG_SLEEP_TIME = 1000;
 
+    private final int id;
     private final Cave cave;
     private final Player player;
 
     private final JFrame frame;
     private final JPanel panel;
 
-    public Application(Cave cave, Player player) {
+    public GameController(int id, Cave cave, Player player) {
+        this.id = id;
         this.cave = cave;
         this.player = player;
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int maxScreenWidth = Math.round(screenSize.width * 0.8f);
-        int maxScreenHeight = Math.round(screenSize.height * 0.8f);
+        int maxScreenWidth = Math.round(screenSize.width * PLAYER_SCALE_FACTOR);
+        int maxScreenHeight = Math.round(screenSize.height * PLAYER_SCALE_FACTOR);
 
         int maxCaveWidth = getCaveWidthPx();
         int maxCaveHeight = getCaveHeightPx();
@@ -55,9 +57,11 @@ public class Application {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 synchronized (cave) {
-                    Application.this.paint((Graphics2D) g);
+                    GameController.this.paint((Graphics2D) g);
                 }
-                frame.repaint();
+                if (isVisible()) {
+                    frame.repaint();
+                }
             }
         };
         frame.add(panel);
@@ -68,15 +72,43 @@ public class Application {
     }
 
     public void start() {
+        log("Game %d stated", id);
         frame.setVisible(true);
-        player.play();
+        try {
+            sleep(LONG_SLEEP_TIME);
+            player.play();
+            while (true) {
+                sleep(LONG_SLEEP_TIME);
+            }
+        } catch (GameOverError ignored) {
+            // Game over
+        } finally {
+            sleep(LONG_SLEEP_TIME);
+            if (cave.isGameOver()) {
+                log("Level %d is completed!", id);
+            } else {
+                log("Level %d is not passed", id);
+                log("Game over!");
+            }
+            frame.setVisible(false);
+        }
+    }
+
+    private void log(String format, Object... params) {
+        System.out.println(String.format(format, params));
     }
 
     public void onMoveRequested(Direction direction) {
+        log("Player moves towards %s", direction);
         synchronized (cave) {
             cave.movePlayer(direction);
         }
         sleep(SLEEP_TIME);
+        synchronized (cave) {
+            if (cave.isGameOver()) {
+                throw new GameOverError();
+            }
+        }
     }
 
     private void sleep(long sleepTime) {
@@ -94,28 +126,39 @@ public class Application {
         g.clearRect(0, 0, getCaveWidthPx(), getCaveHeightPx());
         for (int x = 0; x < cave.getWidth(); x++) {
             for (int y = 0; y < cave.getHeight(); y++) {
-                Cell cell = cave.getCellSafe(x, y);
+                Cell cell = cave.getCell(x, y);
                 switch (cell) {
                     case WALL:
-                        g.setColor(WALL_COLOR);
-                        g.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+                        drawWall(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                         break;
 
                     case EXIT:
-                        g.setColor(EXIT_COLOR);
-                        g.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+                        drawExit(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                         break;
+                }
+                if (x == cave.getPlayerX() && y == cave.getPlayerY()) {
+                    drawPlayer(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                 }
             }
         }
-        int px = cave.getPlayerX();
-        int py = cave.getPlayerY();
+    }
+
+    private void drawPlayer(Graphics2D g, int x0, int y0, int width, int height) {
         g.setColor(PLAYER_COLOR);
-        g.fillOval(
-                px * CELL_WIDTH + (CELL_WIDTH - PLAYER_WIDTH) / 2,
-                py * CELL_HEIGHT + (CELL_HEIGHT - PLAYER_HEIGHT) / 2,
-                PLAYER_WIDTH,
-                PLAYER_HEIGHT);
+        g.fillOval(x0 + Math.round(width * (1f - PLAYER_SCALE_FACTOR) / 2f),
+                y0 + Math.round(height * (1f - PLAYER_SCALE_FACTOR) / 2f),
+                Math.round(width * PLAYER_SCALE_FACTOR),
+                Math.round(height * PLAYER_SCALE_FACTOR));
+    }
+
+    private void drawWall(Graphics2D g, int x0, int y0, int width, int height) {
+        g.setColor(WALL_COLOR);
+        g.fillRect(x0, y0, width, height);
+    }
+
+    private void drawExit(Graphics2D g, int x0, int y0, int width, int height) {
+        g.setColor(EXIT_COLOR);
+        g.fillRect(x0, y0, width, height);
     }
 
     private int getCaveWidthPx() {
@@ -125,5 +168,15 @@ public class Application {
     private int getCaveHeightPx() {
         return cave.getHeight() * CELL_HEIGHT;
     }
+
+    public boolean isPassed() {
+        return cave.isGameOver();
+    }
+
+    public Cave getCave() {
+        return cave;
+    }
+
+    private static final class GameOverError extends Error {}
 
 }

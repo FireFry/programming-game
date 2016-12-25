@@ -44,7 +44,7 @@ public class Cave {
         }
         int x = px + d.dx;
         int y = py + d.dy;
-        Cell cell = getCellSafe(x, y);
+        Cell cell = getCell(x, y);
         if (cell == Cell.WALL) {
             return;
         }
@@ -59,7 +59,7 @@ public class Cave {
         cells[x][y] = cell;
     }
 
-    public Cell getCellSafe(int x, int y) {
+    public Cell getCell(int x, int y) {
         return isValidPosition(x, y) ? cells[x][y] : Cell.WALL;
     }
 
