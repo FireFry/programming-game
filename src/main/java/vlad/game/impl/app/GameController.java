@@ -20,8 +20,8 @@ public class GameController {
     private static final Color EXIT_COLOR = new Color(50, 255, 50);
     private static final Color PLAYER_COLOR = new Color(24, 65, 159);
 
-    private static final int SLEEP_TIME = 100;
-    private static final int LONG_SLEEP_TIME = 500;
+    private static final int SLEEP_TIME_FACTOR = 4000;
+    private static final int LONG_SLEEP_TIME = 1000;
 
     private final int id;
     private final Cave cave;
@@ -103,7 +103,7 @@ public class GameController {
         synchronized (cave) {
             cave.movePlayer(direction);
         }
-        sleep(SLEEP_TIME);
+        sleep(SLEEP_TIME_FACTOR / (cave.getWidth() + cave.getHeight()));
         synchronized (cave) {
             if (cave.isGameOver()) {
                 throw new GameOverError();

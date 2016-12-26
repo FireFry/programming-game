@@ -15,7 +15,7 @@ public class Game11 extends Game {
 
     @Override
     protected Cave createCave() {
-        return BorderHelper.withBorder(new MazeGenerator(50, 50, new Random(75539531)).generate());
+        return BorderHelper.withBorder(new MazeGenerator(50, 50, new Random(249682468)).generate());
     }
 
 }

@@ -1,6 +1,5 @@
 package vlad.game.impl.app;
 
-import com.google.common.base.Preconditions;
 import vlad.game.impl.cave.Cave;
 import vlad.game.impl.cave.Cell;
 import vlad.game.impl.cave.Direction;

@@ -13,15 +13,14 @@ public class Level9 implements Level<Player4> {
             @Override
             public void play() {
                 while (true) {
-                    if (canMoveStraight()) {
-                        move();
-                    } else if (canMoveLeft()) {
-                        turnLeft();
-                        move();
-                    } else if (canMoveRight()) {
-                        turnRight();
-                        move();
+                    if (!canMoveStraight()) {
+                        if (canMoveLeft()) {
+                            turnLeft();
+                        } else {
+                            turnRight();
+                        }
                     }
+                    move();
                 }
             }
 
