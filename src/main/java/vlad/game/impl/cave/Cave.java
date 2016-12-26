@@ -2,6 +2,9 @@ package vlad.game.impl.cave;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * Cave contains a grid of cells and a player in one of them.
+ */
 public class Cave {
     private final int width;
     private final int height;

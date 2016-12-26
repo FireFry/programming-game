@@ -1,5 +1,18 @@
 package vlad.game.impl.cave;
 
+/**
+ * Movement direction.
+ *
+ * <pre>
+ *         N
+ *         ^
+ *         |
+ *     W --+--> E
+ *         |
+ *         |
+ *         S
+ * </pre>
+ */
 public enum Direction {
     NORTH(0, -1),
     EAST(1, 0),
