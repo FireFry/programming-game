@@ -13,10 +13,10 @@ public class Game7 extends Game {
     @Override
     protected Cave createCave() {
         return CavePainter.fromSketch(
-                "######",
-                "#P.#E#",
-                "##...#",
-                "######");
+                "#######",
+                "#P ##E#",
+                "##    #",
+                "#######");
     }
 
 }

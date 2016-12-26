@@ -3,11 +3,11 @@ package vlad.game.impl.core;
 import vlad.game.impl.cave.Cell;
 import vlad.game.impl.cave.Direction;
 
-public abstract class Player4 extends Player {
+public abstract class PlayerD extends Player {
 
     private Direction direction;
 
-    public Player4(Direction initialDirection) {
+    public PlayerD(Direction initialDirection) {
         direction = initialDirection;
     }
 

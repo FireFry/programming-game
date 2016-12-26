@@ -14,11 +14,11 @@ public class Game5 extends Game {
     protected Cave createCave() {
         return CavePainter.fromSketch(
                 "#######",
-                "#.....#",
-                "#.E...#",
-                "#P....#",
-                "#.....#",
-                "##....#",
+                "#     #",
+                "# E   #",
+                "#P    #",
+                "#     #",
+                "##    #",
                 "#######");
     }
 

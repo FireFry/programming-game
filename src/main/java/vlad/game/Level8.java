@@ -1,14 +1,14 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.Player4;
+import vlad.game.impl.core.PlayerD;
 import vlad.game.impl.cave.Direction;
 
-public class Level8 implements Level<Player4> {
+public class Level8 implements Level<PlayerD> {
 
     @Override
-    public Player4 createPlayer() {
-        return new Player4(Direction.WEST) {
+    public PlayerD createPlayer() {
+        return new PlayerD(Direction.WEST) {
 
             @Override
             public void play() {

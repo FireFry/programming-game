@@ -1,20 +1,31 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.Player3;
+import vlad.game.impl.core.PlayerC;
 
-public class Level5 implements Level<Player3> {
+/**
+ * Well done! Your success inspired our hero so much he suddenly broke into a run.
+ * Now he is not capable of controlling his speed, only walls can stop his movement.
+ * Are you still able to help him?
+ */
+public class Level5 implements Level<PlayerC> {
 
     @Override
-    public Player3 createPlayer() {
-        return new Player3() {
+    public PlayerC createPlayer() {
+        return new PlayerC() {
 
+            /**
+             * Available instructions:
+             * runNorth();
+             * runEast();
+             * runSouth();
+             * runWest();
+             */
             @Override
             public void play() {
-                slideEast();
-                slideSouth();
-                slideWest();
-                slideNorth();
+                // Add your instructions after this line:
+                runNorth();
+
             }
 
         };

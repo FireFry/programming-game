@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public abstract class Player5 extends Player {
+public abstract class PlayerE extends Player {
 
     @Override
     void attach(GameController app) {

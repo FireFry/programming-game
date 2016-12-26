@@ -1,25 +1,30 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.Player3;
+import vlad.game.impl.core.PlayerC;
 
-public class Level6 implements Level<Player3> {
+/**
+ * Incredible! You are so good at this!
+ * However, this level is much harder than the previous one.
+ */
+public class Level6 implements Level<PlayerC> {
 
     @Override
-    public Player3 createPlayer() {
-        return new Player3() {
+    public PlayerC createPlayer() {
+        return new PlayerC() {
 
+            /**
+             * Available instructions:
+             * runNorth();
+             * runEast();
+             * runSouth();
+             * runWest();
+             */
             @Override
             public void play() {
-                slideEast();
-                slideNorth();
-                slideEast();
-                slideSouth();
-                slideWest();
-                slideSouth();
-                slideEast();
-                slideNorth();
-                slideWest();
+                // Add your instructions after this line:
+                runNorth();
+
             }
 
         };

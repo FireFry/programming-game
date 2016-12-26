@@ -1,21 +1,31 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.Player2;
+import vlad.game.impl.core.PlayerB;
 
-public class Level3 implements Level<Player2> {
+/**
+ * Hm... This cave is a bit larger than the previous one.
+ * Suddenly your hero grew stronger! Now he can make multiple steps by only one instruction.
+ * Just specify the amount of steps you want him to make as an argument to the familiar methods.
+ */
+public class Level3 implements Level<PlayerB> {
 
     @Override
-    public Player2 createPlayer() {
-        return new Player2() {
+    public PlayerB createPlayer() {
+        return new PlayerB() {
 
+            /**
+             * Available instructions:
+             * moveNorth(steps);
+             * moveEast(steps);
+             * moveSouth(steps);
+             * moveWest(steps);
+             */
             @Override
             public void play() {
-                moveEast(4);
-                moveSouth(4);
-                moveWest(4);
-                moveNorth(2);
-                moveEast(2);
+                // Add your instructions after this line:
+                moveEast(3);
+
             }
 
         };

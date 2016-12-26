@@ -1,22 +1,29 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.Player1;
+import vlad.game.impl.core.PlayerA;
 
-public class Level2 implements Level<Player1> {
+/**
+ * Well done! You passed to the level 2!
+ */
+public class Level2 implements Level<PlayerA> {
 
     @Override
-    public Player1 createPlayer() {
-        return new Player1() {
+    public PlayerA createPlayer() {
+        return new PlayerA() {
 
+            /**
+             * Available instructions:
+             * moveNorth();
+             * moveEast();
+             * moveSouth();
+             * moveWest();
+             */
             @Override
             public void play() {
+                // Add your instructions after this line:
                 moveEast();
-                moveSouth();
-                moveEast();
-                moveEast();
-                moveNorth();
-                moveEast();
+
             }
 
         };

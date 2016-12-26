@@ -2,7 +2,7 @@ package vlad.game.impl.core;
 
 import vlad.game.impl.cave.Direction;
 
-public abstract class Player2 extends Player {
+public abstract class PlayerB extends Player {
 
     protected final void moveNorth(int steps) {
         move(Direction.NORTH, steps);
