@@ -1,8 +1,7 @@
 package vlad.game;
 
-import vlad.game.impl.app.Level;
-import vlad.game.impl.app.Player;
-import vlad.game.impl.app.Player1;
+import vlad.game.impl.core.Level;
+import vlad.game.impl.core.Player1;
 
 public class Level2 implements Level<Player1> {
 

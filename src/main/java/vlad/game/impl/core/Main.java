@@ -1,4 +1,4 @@
-package vlad.game.impl.app;
+package vlad.game.impl.core;
 
 import vlad.game.impl.cave.Direction;
 import vlad.game.impl.utils.CaveRandomizer;

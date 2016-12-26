@@ -1,9 +1,12 @@
-package vlad.game.impl.app;
+package vlad.game.impl.core;
 
 import com.google.common.base.Throwables;
 import vlad.game.impl.cave.Cave;
 import vlad.game.impl.cave.Cell;
 import vlad.game.impl.cave.Direction;
+import vlad.game.impl.view.ExitPainter;
+import vlad.game.impl.view.PlayerPainter;
+import vlad.game.impl.view.WallPainter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +16,7 @@ public class GameController {
     private static final int CELL_WIDTH = 50;
     private static final int CELL_HEIGHT = 50;
 
-    private static final float PLAYER_SCALE_FACTOR = 0.8f;
-
     private static final Color BG_COLOR = new Color(200, 200, 200);
-    private static final Color WALL_COLOR = new Color(100, 100, 100);
-    private static final Color EXIT_COLOR = new Color(50, 255, 50);
-    private static final Color PLAYER_COLOR = new Color(24, 65, 159);
 
     private static final int SLEEP_TIME_FACTOR = 4000;
     private static final int LONG_SLEEP_TIME = 1000;
@@ -30,14 +28,18 @@ public class GameController {
     private final JFrame frame;
     private final JPanel panel;
 
+    private final PlayerPainter playerPainter = new PlayerPainter();
+    private final WallPainter wallPainter = new WallPainter();
+    private final ExitPainter exitPainter = new ExitPainter();
+
     public GameController(int id, Cave cave, Player player) {
         this.id = id;
         this.cave = cave;
         this.player = player;
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int maxScreenWidth = Math.round(screenSize.width * PLAYER_SCALE_FACTOR);
-        int maxScreenHeight = Math.round(screenSize.height * PLAYER_SCALE_FACTOR);
+        int maxScreenWidth = Math.round(screenSize.width * 0.8f);
+        int maxScreenHeight = Math.round(screenSize.height * 0.8f);
 
         int maxCaveWidth = getCaveWidthPx();
         int maxCaveHeight = getCaveHeightPx();
@@ -129,36 +131,17 @@ public class GameController {
                 Cell cell = cave.getCell(x, y);
                 switch (cell) {
                     case WALL:
-                        drawWall(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+                        wallPainter.draw(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                         break;
-
                     case EXIT:
-                        drawExit(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+                        exitPainter.draw(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                         break;
                 }
                 if (cave.isPlayerPosition(x, y)) {
-                    drawPlayer(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+                    playerPainter.draw(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                 }
             }
         }
-    }
-
-    private void drawPlayer(Graphics2D g, int x0, int y0, int width, int height) {
-        g.setColor(PLAYER_COLOR);
-        g.fillOval(x0 + Math.round(width * (1f - PLAYER_SCALE_FACTOR) / 2f),
-                y0 + Math.round(height * (1f - PLAYER_SCALE_FACTOR) / 2f),
-                Math.round(width * PLAYER_SCALE_FACTOR),
-                Math.round(height * PLAYER_SCALE_FACTOR));
-    }
-
-    private void drawWall(Graphics2D g, int x0, int y0, int width, int height) {
-        g.setColor(WALL_COLOR);
-        g.fillRect(x0, y0, width, height);
-    }
-
-    private void drawExit(Graphics2D g, int x0, int y0, int width, int height) {
-        g.setColor(EXIT_COLOR);
-        g.fillRect(x0, y0, width, height);
     }
 
     private int getCaveWidthPx() {

@@ -1,7 +1,7 @@
 package vlad.game;
 
-import vlad.game.impl.app.Level;
-import vlad.game.impl.app.Player5;
+import vlad.game.impl.core.Level;
+import vlad.game.impl.core.Player5;
 import vlad.game.impl.cave.Direction;
 
 import java.util.List;

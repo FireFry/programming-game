@@ -1,4 +1,4 @@
-package vlad.game.impl.app;
+package vlad.game.impl.core;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;

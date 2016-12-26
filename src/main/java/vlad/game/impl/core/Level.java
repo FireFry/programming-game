@@ -1,4 +1,4 @@
-package vlad.game.impl.app;
+package vlad.game.impl.core;
 
 public interface Level<P extends Player> {
 
