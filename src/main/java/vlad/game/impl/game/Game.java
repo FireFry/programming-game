@@ -18,7 +18,7 @@ public abstract class Game {
         gameController.start();
     }
 
-    public boolean isPassed() {
+    public final boolean isPassed() {
         return gameController.isPassed();
     }
 }

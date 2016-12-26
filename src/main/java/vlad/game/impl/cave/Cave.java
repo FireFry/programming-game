@@ -28,13 +28,13 @@ public class Cave {
     }
 
     private void setPlayerPosition(int x, int y) {
-        Preconditions.checkArgument(isValidPosition(x, y));
+        Preconditions.checkArgument(hasCell(x, y));
         Preconditions.checkState(cells[x][y] != Cell.WALL);
         this.px = x;
         this.py = y;
     }
 
-    public boolean isValidPosition(int x, int y) {
+    public boolean hasCell(int x, int y) {
         return x >= 0 && x < width && y >= 0 && y < height;
     }
 
@@ -60,7 +60,7 @@ public class Cave {
     }
 
     public Cell getCell(int x, int y) {
-        return isValidPosition(x, y) ? cells[x][y] : Cell.WALL;
+        return hasCell(x, y) ? cells[x][y] : Cell.WALL;
     }
 
     public int getWidth() {

@@ -50,7 +50,7 @@ public final class MazeGenerator {
             Direction direction = Direction.values()[random.nextInt(Direction.values().length)];
             int cx = x + direction.dx;
             int cy = y + direction.dy;
-            if (cave.isValidPosition(cx, cy) && cave.getCell(cx, cy) == Cell.WALL) {
+            if (cave.hasCell(cx, cy) && cave.getCell(cx, cy) == Cell.WALL) {
                 int notWalls = 0;
                 for (int dx = -1; dx <= 1; dx++) {
                     for (int dy = -1; dy <= 1; dy++) {
