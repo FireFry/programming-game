@@ -1,18 +1,18 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerC;
+import vlad.game.impl.core.ThirdPlayer.Player;
 
 /**
  * Well done! Your success inspired our hero so much he suddenly broke into a run.
  * Now he is not capable of controlling his speed, only walls can stop his movement.
  * Are you still able to help him?
  */
-public class Level5 implements Level<PlayerC> {
+public class Level5 implements Level<Player> {
 
     @Override
-    public PlayerC createPlayer() {
-        return new PlayerC() {
+    public Player createPlayer() {
+        return new Player() {
 
             /**
              * Available instructions:

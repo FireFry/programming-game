@@ -1,7 +1,7 @@
 package vlad.game;
 
+import vlad.game.impl.core.FirstPlayer.Player;
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerA;
 
 /**
  * Hello, this is your first challenge.
@@ -12,14 +12,14 @@ import vlad.game.impl.core.PlayerA;
  * You can control the player by adding new instruction into the play() method of Player's body.
  * To watch the player movement inside the cave run {@link Application}.
  */
-public class Level1 implements Level<PlayerA> {
+public class Level1 implements Level<Player> {
 
     /**
      * This method creates a player to challenge the first level of the game.
      */
     @Override
-    public PlayerA createPlayer() {
-        return new PlayerA() {
+    public Player createPlayer() {
+        return new Player() {
 
             /**
              * Available instructions:

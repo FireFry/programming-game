@@ -8,7 +8,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        Player player = new Player() {
+        AbstractPlayer player = new AbstractPlayer() {
             private final Random random = new Random();
 
             @Override

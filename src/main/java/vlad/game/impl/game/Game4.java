@@ -1,8 +1,8 @@
 package vlad.game.impl.game;
 
 import vlad.game.Level4;
-import vlad.game.impl.utils.CavePainter;
 import vlad.game.impl.cave.Cave;
+import vlad.game.impl.utils.CavePainter;
 
 public class Game4 extends Game {
 

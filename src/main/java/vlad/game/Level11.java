@@ -1,16 +1,16 @@
 package vlad.game;
 
-import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerE;
 import vlad.game.impl.cave.Direction;
+import vlad.game.impl.core.FifthPlayer.Player;
+import vlad.game.impl.core.Level;
 
 import java.util.List;
 
-public class Level11 implements Level<PlayerE> {
+public class Level11 implements Level<Player> {
 
     @Override
-    public PlayerE createPlayer() {
-        return new PlayerE() {
+    public Player createPlayer() {
+        return new Player() {
 
             @Override
             protected void play(List<Direction> shortestPath) {

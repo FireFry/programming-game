@@ -1,16 +1,16 @@
 package vlad.game;
 
+import vlad.game.impl.core.FirstPlayer.Player;
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerA;
 
 /**
  * Well done! You passed to the level 2!
  */
-public class Level2 implements Level<PlayerA> {
+public class Level2 implements Level<Player> {
 
     @Override
-    public PlayerA createPlayer() {
-        return new PlayerA() {
+    public Player createPlayer() {
+        return new Player() {
 
             /**
              * Available instructions:

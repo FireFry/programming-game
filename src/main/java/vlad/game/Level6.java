@@ -1,17 +1,17 @@
 package vlad.game;
 
 import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerC;
+import vlad.game.impl.core.ThirdPlayer.Player;
 
 /**
  * Incredible! You are so good at this!
  * However, this level is much harder than the previous one.
  */
-public class Level6 implements Level<PlayerC> {
+public class Level6 implements Level<Player> {
 
     @Override
-    public PlayerC createPlayer() {
-        return new PlayerC() {
+    public Player createPlayer() {
+        return new Player() {
 
             /**
              * Available instructions:

@@ -2,7 +2,7 @@ package vlad.game.impl.core;
 
 import vlad.game.impl.cave.Cave;
 
-public abstract class Player {
+public abstract class AbstractPlayer {
 
     GameController app = null;
     Cave cave;

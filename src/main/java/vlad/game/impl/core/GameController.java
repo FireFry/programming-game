@@ -23,7 +23,7 @@ public class GameController {
 
     private final int id;
     private final Cave cave;
-    private final Player player;
+    private final AbstractPlayer player;
 
     private final JFrame frame;
     private final JPanel panel;
@@ -32,7 +32,7 @@ public class GameController {
     private final WallPainter wallPainter = new WallPainter();
     private final ExitPainter exitPainter = new ExitPainter();
 
-    public GameController(int id, Cave cave, Player player) {
+    public GameController(int id, Cave cave, AbstractPlayer player) {
         this.id = id;
         this.cave = cave;
         this.player = player;

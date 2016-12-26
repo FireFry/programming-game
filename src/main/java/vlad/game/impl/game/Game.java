@@ -1,8 +1,8 @@
 package vlad.game.impl.game;
 
+import vlad.game.impl.cave.Cave;
 import vlad.game.impl.core.GameController;
 import vlad.game.impl.core.Level;
-import vlad.game.impl.cave.Cave;
 
 /**
  * Abstract superclass for all games.

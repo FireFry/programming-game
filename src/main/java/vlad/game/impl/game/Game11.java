@@ -1,9 +1,9 @@
 package vlad.game.impl.game;
 
 import vlad.game.Level11;
+import vlad.game.impl.cave.Cave;
 import vlad.game.impl.utils.BorderHelper;
 import vlad.game.impl.utils.MazeGenerator;
-import vlad.game.impl.cave.Cave;
 
 import java.util.Random;
 

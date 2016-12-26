@@ -1,8 +1,8 @@
 package vlad.game;
 
-import vlad.game.impl.core.Level;
-import vlad.game.impl.core.PlayerD;
 import vlad.game.impl.cave.Direction;
+import vlad.game.impl.core.ForthPlayer.Player;
+import vlad.game.impl.core.Level;
 
 /**
  * Ok, it seems that our hero calmed down.
@@ -10,11 +10,11 @@ import vlad.game.impl.cave.Direction;
  * Now he can move straight and turn left/right.
  * Try and see if you still can control him.
  */
-public class Level7 implements Level<PlayerD> {
+public class Level7 implements Level<Player> {
 
     @Override
-    public PlayerD createPlayer() {
-        return new PlayerD(Direction.EAST) { // <- his initial direction
+    public Player createPlayer() {
+        return new Player(Direction.EAST) { // <- his initial direction
 
             /**
              * Available instructions:
