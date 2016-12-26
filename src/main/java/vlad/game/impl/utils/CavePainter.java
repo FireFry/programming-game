@@ -27,7 +27,7 @@ import vlad.game.impl.cave.Cell;
  *     <li> any other character means "Empty Cell"
  * </ul>
  */
-public class CavePainter {
+public final class CavePainter {
 
     /** A character that represents player */
     private static final char PLAYER = 'P';

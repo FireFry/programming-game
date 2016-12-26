@@ -136,7 +136,7 @@ public class GameController {
                         drawExit(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                         break;
                 }
-                if (x == cave.getPlayerX() && y == cave.getPlayerY()) {
+                if (cave.isPlayerPosition(x, y)) {
                     drawPlayer(g, x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
                 }
             }

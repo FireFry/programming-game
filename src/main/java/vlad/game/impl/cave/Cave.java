@@ -79,6 +79,10 @@ public class Cave {
         return py;
     }
 
+    public boolean isPlayerPosition(int x, int y) {
+        return px == x && py == y;
+    }
+
     public boolean isGameOver() {
         return gameOver;
     }

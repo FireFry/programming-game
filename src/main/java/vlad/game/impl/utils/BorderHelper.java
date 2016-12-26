@@ -6,7 +6,7 @@ import vlad.game.impl.cave.Cave;
 /**
  * Utility class that helps to surround existing cave with additional border of walls.
  */
-public class BorderHelper {
+public final class BorderHelper {
 
     /**
      * Shortcut for {@code withBorder(cave, 1)}

@@ -18,7 +18,7 @@ public class Main {
                 }
             }
         };
-        new GameController(0, CaveRandomizer.random(3, 3), player).start();
+        new GameController(0, CaveRandomizer.random(new Random(), 3, 3), player).start();
     }
 
 }
