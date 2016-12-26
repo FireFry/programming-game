@@ -47,7 +47,7 @@ public class GameController {
         float scale = Math.min(1f, Math.min(1f * maxScreenWidth / maxCaveWidth, 1f * maxScreenHeight / maxCaveHeight));
         Dimension preferredSize = new Dimension(Math.round(maxCaveWidth * scale), Math.round(maxCaveHeight * scale));
 
-        frame = new JFrame();
+        frame = new JFrame("Level " + id);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         panel = new JPanel() {
             @Override
@@ -74,7 +74,7 @@ public class GameController {
     }
 
     public void start() {
-        log("Game %d stated", id);
+        log("Level %d stated", id);
         frame.setVisible(true);
         try {
             sleep(LONG_SLEEP_TIME);
