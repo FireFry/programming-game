@@ -1,4 +1,4 @@
-package vlad.game.impl.app;
+package vlad.game.impl.utils;
 
 import vlad.game.impl.cave.Cave;
 import vlad.game.impl.cave.Cell;

@@ -1,7 +1,7 @@
 package vlad.game.impl.game;
 
 import vlad.game.Level4;
-import vlad.game.impl.app.CavePainter;
+import vlad.game.impl.utils.CavePainter;
 import vlad.game.impl.cave.Cave;
 
 public class Game4 extends Game {
@@ -12,7 +12,7 @@ public class Game4 extends Game {
 
     @Override
     protected Cave createCave() {
-        return CavePainter.paint(
+        return CavePainter.fromSketch(
                 "#######",
                 "#P....#",
                 "####.##",

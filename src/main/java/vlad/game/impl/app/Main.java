@@ -1,6 +1,7 @@
 package vlad.game.impl.app;
 
 import vlad.game.impl.cave.Direction;
+import vlad.game.impl.utils.CaveRandomizer;
 
 import java.util.Random;
 

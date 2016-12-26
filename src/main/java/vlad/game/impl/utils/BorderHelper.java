@@ -1,5 +1,6 @@
-package vlad.game.impl.app;
+package vlad.game.impl.utils;
 
+import com.google.common.base.Preconditions;
 import vlad.game.impl.cave.Cave;
 
 /**
@@ -22,21 +23,24 @@ public class BorderHelper {
      * <p>For example given the following cave and thickness 1:
      *
      * <pre>
-     * P.#.E
-     * #...#
+     *     P.#.E
+     *     #...#
      * </pre>
      *
      * the result of this method will be:
      *
      * <pre>
-     * #######
-     * #P.#.E#
-     * ##...##
-     * #######
+     *     #######
+     *     #P.#.E#
+     *     ##...##
+     *     #######
      * </pre>
      */
     public static Cave withBorder(Cave cave, int thickness) {
-        // Add thickness two times, because walls are added to each size
+        Preconditions.checkNotNull(cave);
+        Preconditions.checkArgument(thickness >= 0);
+
+        // Add thickness two times, because walls are added to each size of the cave
         int newWidth = cave.getWidth() + thickness * 2;
         int newHeight = cave.getHeight() + thickness * 2;
 
